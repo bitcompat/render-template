@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM golang:1.18-bullseye AS golang-builder
+FROM golang:1.19-bullseye AS golang-builder
 
 ARG PACKAGE=render-template
 ARG TARGET_DIR=common
