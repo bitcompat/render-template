@@ -12,7 +12,7 @@ jobs:
       name: main
       image_tag: |
         latest
-        1.0.3-bullseye-r1 # renovate: datasource=github-releases depName=bitnami/render-template
+        1.0.3-bullseye-r2 # renovate: datasource=github-releases depName=bitnami/render-template
         1.0.3-bullseye # renovate: datasource=github-releases depName=bitnami/render-template
         1.0.3 # renovate: datasource=github-releases depName=bitnami/render-template
         1.0
