@@ -1,0 +1,25 @@
+From cd4be3f5e3045dce644714f16a2d12efb5137fea Mon Sep 17 00:00:00 2001
+From: Alessandro Chitolina <alekitto@gmail.com>
+Date: Wed, 12 Oct 2022 11:21:33 +0200
+Subject: [PATCH] fix(make): fix compatibility with golang 1.19
+
+---
+ vars.mk | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vars.mk b/vars.mk
+index 2d4a69d..a60947d 100644
+--- a/vars.mk
++++ b/vars.mk
+@@ -8,7 +8,7 @@ TOOL_PATH ?= $(BUILD_DIR)/$(TOOL_NAME)
+ 
+ BUILD_DATE := $(shell date -u '+%Y-%m-%d %I:%M:%S UTC' 2> /dev/null)
+ GIT_HASH := $(shell git rev-parse HEAD 2> /dev/null)
+-LDFLAGS="'main.buildDate=$(BUILD_DATE)' -X main.commit=$(GIT_HASH) -s -w"
++LDFLAGS = "main.buildDate='$(BUILD_DATE)' -X main.commit=$(GIT_HASH) -s -w"
+ 
+ DEBUG ?= 0
+ 
+-- 
+2.38.0
+
