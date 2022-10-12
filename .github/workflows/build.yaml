@@ -1,20 +1,19 @@
-name: build
+name: Build
 
 on:
   push:
+    branches-ignore:
+      - main
+  pull_request_target:
     branches:
       - main
 
 jobs:
   build_package:
+    if: github.event_name != 'pull_request_target' || github.repository_owner != 'bitcompat'
     uses: bitcompat/base/.github/workflows/build.yaml@main
     with:
       name: main
-      image_tag: |
-        latest
-        1.0.3-bullseye-r2 # renovate: datasource=github-releases depName=bitnami/render-template
-        1.0.3-bullseye # renovate: datasource=github-releases depName=bitnami/render-template
-        1.0.3 # renovate: datasource=github-releases depName=bitnami/render-template
-        1.0
-        1
+      push: false
+      image_tag: 'latest'
     secrets: inherit

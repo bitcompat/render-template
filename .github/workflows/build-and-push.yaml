@@ -1,0 +1,20 @@
+name: Build Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_package:
+    uses: bitcompat/base/.github/workflows/build.yaml@main
+    with:
+      name: main
+      image_tag: |
+        latest
+        1.0.3-bullseye-r2 # renovate: datasource=github-releases depName=bitnami/render-template
+        1.0.3-bullseye # renovate: datasource=github-releases depName=bitnami/render-template
+        1.0.3 # renovate: datasource=github-releases depName=bitnami/render-template
+        1.0
+        1
+    secrets: inherit
