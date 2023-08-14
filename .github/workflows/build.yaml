@@ -15,5 +15,6 @@ jobs:
     with:
       name: main
       push: false
-      image_tag: 'latest'
+      version: ''
+      latest: true
     secrets: inherit

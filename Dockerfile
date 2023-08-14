@@ -4,8 +4,8 @@ FROM golang:1.21-bullseye AS golang-builder
 ARG PACKAGE=render-template
 ARG TARGET_DIR=common
 # renovate: datasource=github-releases depName=bitnami/render-template
-ARG VERSION=1.0.3
-ARG REF=v${VERSION}
+ARG BUILD_VERSION=1.0.3
+ARG REF=v${BUILD_VERSION}
 ARG CGO_ENABLED=0
 
 RUN mkdir -p /opt/bitnami
@@ -32,7 +32,7 @@ RUN --mount=type=cache,target=/root/.cache/go-build <<EOT /bin/bash
 
     mkdir -p /opt/bitnami/${TARGET_DIR}/licenses
     mkdir -p /opt/bitnami/${TARGET_DIR}/bin
-    cp -f COPYING /opt/bitnami/${TARGET_DIR}/licenses/${PACKAGE}-${VERSION}.txt
+    cp -f COPYING /opt/bitnami/${TARGET_DIR}/licenses/${PACKAGE}-${BUILD_VERSION}.txt
     cp -f out/${PACKAGE} /opt/bitnami/${TARGET_DIR}/bin/render-template
     popd
 
