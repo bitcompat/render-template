@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.27
-FROM golang:1.24-bullseye AS golang-builder
+FROM golang:1.24-trixie AS golang-builder
 
 ARG PACKAGE=render-template
 ARG TARGET_DIR=common
@@ -12,7 +12,7 @@ RUN mkdir -p /opt/bitnami
 RUN <<EOT /bin/bash
     set -ex
 
-    apt-get update -qq && apt-get install -y git make upx patch
+    apt-get update -qq && apt-get install -y git make upx-ucl patch
 
     rm -rf ${PACKAGE} || true
     mkdir -p ${PACKAGE}
@@ -39,6 +39,6 @@ RUN --mount=type=cache,target=/root/.cache/go-build <<EOT /bin/bash
     rm -rf ${PACKAGE}
 EOT
 
-FROM bitnami/minideb:bullseye as stage-0
+FROM bitnami/minideb:trixie as stage-0
 
 COPY --link --from=golang-builder /opt/bitnami /opt/bitnami
