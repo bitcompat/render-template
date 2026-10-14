@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.27
-FROM golang:1.24-trixie AS golang-builder
+FROM golang:1.27-trixie AS golang-builder
 
 ARG PACKAGE=render-template
 ARG TARGET_DIR=common
